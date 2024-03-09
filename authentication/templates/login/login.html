@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2>Login</h2>
+<form method="post"> <!-- POST-request the form -->
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    <tr><th></th><td><input class="btn btn-primary"type="submit" value="Submit" /></td></tr>
+    </table>
+</form>
+<p><strong>-- OR --</strong></p>
+<a id="lgn-btn" class="btn btn-social btn-google" href="{% url 'social:begin' 'google-oauth2' %}"><span class="fa fa-google"></span>Login with Google</a>
+<br>
+<a id="lgn-btn" class="btn btn-social btn-facebook" href="{% url 'social:begin' 'facebook' %}"><span class="fa fa-facebook"></span>Login with Facebook</a>
+{% endblock %}
