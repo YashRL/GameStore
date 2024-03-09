@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+{% block content %}
+<h2>Create a new account</h2>
+<form method="post"> <!-- POST-request the form -->
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    <tr><th></th><td><input class="btn btn-primary"type="submit" value="Submit" /></td></tr>
+    </table>
+</form>
+{% endblock %}
