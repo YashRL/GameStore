@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>AKA Gamestore</title>
+        <meta name="description" content="AKA Gamestore">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/common/css/base.css">
+        <link rel="icon" href="/static/icons/favicon.ico">
+
+        <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="/static/bootstrap/css/bootstrap-social.css" rel="stylesheet">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="/static/bootstrap/js/bootstrap.js"></script>
+        {% block javascript %}
+        {% endblock %}
+        {% block css %}
+        {% endblock %}
+        {% block meta %}
+        {% endblock %}
+    </head>
+    <body>
+      {% include "navigation.html" %}
+
+      <div class="green"></div>
+      <div class="container">
+        {% block content %}
+          <!--[if lte IE 9]>
+              <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+          <![endif]-->
+        {% endblock %}
+      </div>
+    </body>
+</html>
