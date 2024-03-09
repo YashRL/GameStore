@@ -1,0 +1,39 @@
+.btn {
+  margin-left: 20px;
+}
+
+.games-list {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-flow:wrap row;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.game-container {
+  position: relative;
+  width: 200px;
+  margin-bottom: 30px;
+  margin-right: 20px;
+}
+
+.game-container a {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.multiline:hover {
+  overflow: visible;
+  white-space: normal;
+}
+
+.game-image {
+  margin-top: 5px;
+  background-image: url('../icons/store/game-pic.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 170px;
+}

@@ -1,0 +1,80 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  box-sizing: content-box;
+}
+
+.root {
+  margin-top: 20px;
+}
+
+h1, h3 {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+  font-weight: 900 !important;
+}
+
+h4 {
+  margin: 0;
+  font-weight: 200 !important;
+}
+
+
+.marginbottom {
+  margin-bottom: 40px;
+}
+/* from here on sort these to their individiual css files */
+
+.green {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 330px;
+    background-color: #21d160;
+    z-index: -1;
+    clip-path: polygon(0 0, 100% 0, 100% 65%, 0 100%);
+}
+
+.game-price {
+    background-color: #ff3860;
+    width: 70px;
+    height: 70px;
+    border-radius: 70px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 70px; /* match this with height */
+    color: white;
+}
+
+.right-align {
+  position: absolute;
+  right: 0;
+}
+
+.inline-block {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.errimg {
+  width: 80%;
+  max-width: 800px;
+}
+
+.info {
+  margin-bottom: 80px;
+}
+
+.multiline {
+  display: inline-block;
+  max-width: 175px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: top
+}

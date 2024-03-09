@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+      <style>
+        body, html {
+          margin: 0;
+          padding: 0;
+        }
+  </style>
+  <script type='text/javascript'>
+      var settings = {
+        messageType: "SETTING",
+        options: {
+          "width": 800,
+          "height": 600,
+        },
+      }
+      parent.postMessage(settings, "*")
+    </script>
+    <script type="text/javascript" src="javascript/phaser.js"></script>
+    <script type="text/javascript" src="javascript/boot.js"></script>
+    <script type="text/javascript" src="javascript/load.js"></script>
+    <script type="text/javascript" src="javascript/menu.js"></script>
+    <script type="text/javascript" src="javascript/instructions.js"></script>
+    <script type="text/javascript" src="javascript/player.js"></script>
+    <script type="text/javascript" src="javascript/controls.js"></script>
+    <script type="text/javascript" src="javascript/stars_and_platforms.js"></script>
+    <script type="text/javascript" src="javascript/monsters.js"></script>
+    <script type="text/javascript" src="javascript/misc_functions.js"></script>
+    <script type="text/javascript" src="javascript/objects_adding.js"></script>
+    <script type="text/javascript" src="javascript/play.js"></script>
+    <script type="text/javascript" src="javascript/over.js"></script>
+    <script type="text/javascript" src="javascript/startgame.js"></script>
+
+
+</head>
+
+<body>
+    <div id="game_div"> </div>
+</body>
+
+</html>

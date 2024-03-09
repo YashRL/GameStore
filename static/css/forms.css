@@ -1,0 +1,48 @@
+/* Styling for forms altogether*/
+
+#lgn-btn {
+  margin-top: 20px
+}
+
+label {
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+input, select {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  border-color: #30cf65;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 200;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+form th {
+  vertical-align: top;
+}
+
+form td {
+  padding-bottom: 1em;
+}
+
+.helptext {
+  margin-top: 1em;
+  display: block;
+  color: #2F3138;
+  font-size: 11px;
+  font-weight: 500;
+}
+.oddcolors td:first-child {
+  padding: 20px 10px;
+}
+.oddcolors tr:nth-child(odd) {
+    background-color: rgba(48,207,101, 0.2);
+
+}
