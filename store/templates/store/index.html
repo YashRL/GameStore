@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/store.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class='root'>
+  <div class='green'></div>
+  <h1>AKA Gamestore</h1>
+  <div class='info'><p>
+    {% if user.is_authenticated %} Hi <b>{{user}}</b> and {% endif %} Welcome to the AKA Gamestore! We have thousands of games from Action to Indie and everything in-between. Enjoy exclusive deals, automatic game updates and other great perks. This is the ultimate entertainment platform. Play, connect, create and more! Our unlimited passion for technology, content and services,  and relentless pursuit of innovation, drives us to deliver ground-breaking new excitement and entertainment in ways that only AKA Gamestore can.
+Everything we do, is to move you emotionally.
+    </p></div>
+  {% if not user_has_profile %}
+  <div class="formdiv">
+    <p>You must complete your registration! Please choose your user type below.</p>
+    <form class="form" method="post"> <!-- POST-request the form to / -->
+      {% csrf_token %}
+        {{ form }}
+        <tr><th></th><td><input class="btn btn-success" type="submit" value="Submit" /></td></tr>
+    </form>
+  </div>
+  {% endif %}
+  {% if user.is_authenticated %}
+  <h2>Your games</h2>
+  <div class='games-list'>
+    {% for owned_game in owned_games %}
+    <div class='game-container'>
+      <span class="multiline"> <a href='/game/{{owned_game.id}}'>{{ owned_game.name }} <a/></span>
+      <a href='/game/{{owned_game.id}}'>
+        <div class='game-image'></div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+
+  <h2>All games</h2>
+  {% for category in categories %}
+    <h4>{{ category.name }}</h4>
+      <div class='games-list'>
+      {% for game in games %}
+        {% if game.category == category %}
+          <div class='game-container'>
+            <a class="multiline" href='/game/{{game.id}}'>{{ game.name }} </a>
+            <div class='game-price right-align'>{{ game.price}} €</div>
+            <a href='/game/{{game.id}}'>
+              <div class='game-image'></div>
+            </a>
+          </div> <!-- game-container -->
+        {% endif %}
+      {% endfor %}
+      </div> <!-- games-list row -->
+  {% endfor %}
+</div>
+{% endblock %}
