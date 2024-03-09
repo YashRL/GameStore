@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.profile.is_activated %}
+<div id="form">
+	<h3>Buy game</h3>
+	<form action="http://payments.webcourse.niksula.hut.fi/pay/" method="POST">
+	    <input type="hidden" name="pid" value={{pid}} />
+	    <input type="hidden" name="sid" value={{sid}} />
+	    <input type="hidden" name="success_url"
+	            value="http://{{current_host}}/game/{{game_id}}/success/" />
+	    <input type="hidden" name="cancel_url"
+	            value="http://{{current_host}}/game/{{game_id}}/cancel/" />
+	    <input type="hidden" name="error_url"
+	            value="http://{{current_host}}/game/{{game_id}}/error/" />
+	    <input type="hidden" name="checksum"
+	            value={{checksum}} />
+	    <input type="hidden" id="id_amount" name="amount" value={{amount}} />
+			<p>Confirm payment<p>
+			<ul>
+				<li><b>Game:</b> {{game.name}}</li>
+				<li><b>Price:</b> {{amount}}€</li>
+			</ul>
+	    <input class="btn btn-primary" type="submit" value="Accept Payment"/>
+	</form>
+</div>
+{% else %}
+<h3>Please activate your email or finish your profile to continue.</h3>
+{% endif %}
+{% endblock %}

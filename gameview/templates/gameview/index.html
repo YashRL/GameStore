@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/gameview.css' %}">
+{% endblock %}
+
+{% block javascript %}
+<script>
+  var csrf = "{% csrf_token %}"
+</script>
+<script src='/static/gameview/main.js'></script>
+{% endblock %}
+
+{% block meta %}
+<meta property="og:title"         content="AKA Gamestore - {{game.name}}" />
+<meta property="og:description"   content="{{game.description}}" />
+<meta property="og:image"         content="https://wsd2017gamestore.herokuapp.com/static/common/icons/game-pic.png" />
+<meta property="og:url"           content="https://wsd2017gamestore.herokuapp.com/game/{{game.id}}/" />
+<meta property="og:type"          content="website" />
+{% endblock %}
+
+{% block content %}
+  <h2 class="inline-block">{{game.name}}</h2>
+  {% if not owned and not developed %}
+  <p class="game-price inline-block">{{game.price}}€</p>
+  {% endif %}
+  <p>{{game.description}}</p>
+  <div id="frame_div"></div>
+  <div id="message"></div>
+
+  {% if owned or developed %}
+      <iframe src="{{ game.url }}" id="gameframe" frameborder="0"></iframe>
+
+      <!-- Share button code -->
+      <div class="share-button" data-href="https://wsd2017gamestore.herokuapp.com/game/{{game_id}}/"><a target="_blank" title="Share this game on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwsd2017gamestore.herokuapp.com%2Fgame%2F{{game_id}}%2F&amp;src=sdkpreparse"><img width="30px" src="../../static/icons/social/facebook.png" /></a></div>
+      <div class="share-button"><a target="_blank" title="Share this game on Twitter" href="https://twitter.com/intent/tweet?text=Check%20this%20game%20out&url=https://wsd2017gamestore.herokuapp.com/game/{{game_id}}/"><img src="../../static/icons/social/twitter.png" width="30px" /></a></div>
+  {% elif not logged_in %}
+      <br>
+      <div class='info-modal'>
+          <a class="btn btn-primary" role="button" href="/auth/login/">Log in</a> in order to buy or play this game.
+      </div>
+
+  {% else %}
+      <div class='info-modal'>
+          Please 	<a class="btn btn-primary" role="button" href="payment/">buy</a> this game to play it.
+      </div>
+  {% endif %}
+
+      {% if logged_in and owned or logged_in and developed  %}
+        <div id="loadgame"></div>
+        <h4>Highscores</h4>
+        <div id="scores"></div>
+      {% endif %}
+
+  <br>
+{% endblock %}

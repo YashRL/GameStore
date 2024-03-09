@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load is_developer %}
+{% block content %}
+  {% if user.is_authenticated and user|user_is_developer and user|correct_developer:game %}
+      <form action="" method="post">
+        {% csrf_token %}
+        <p>To delete this game, kindly click the following button.</p>
+        <table>
+          {{ form.as_table}}
+        </table>
+        <tr><th></th><td><input class="btn btn-primary"type="submit" value="Submit" /></td></tr>
+      </form>
+  {% else %} <!-- user should not be here -->
+  <div class="alert alert-danger">
+  <strong>You do not have rights to delete this game.</strong> Click <a href='/'>here</a> to return to the front page.
+</div>
+  {% endif %}
+{% endblock %}

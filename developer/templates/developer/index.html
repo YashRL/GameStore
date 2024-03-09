@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if user.profile.is_activated %}
+<div class="marginbottom col-sm-4">
+<h2>Add a new game</h2>
+<form action="" method="post"> <!-- POST-request the form to / -->
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <tr><th></th><td><input class="btn btn-success"type="submit" value="Submit" /></td></tr>
+</form>
+</div>
+{% if user.is_authenticated %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- ### JAVASCRIPT ### -->
+<script>
+  function redirect(game_id, funktio){
+    // Takes the user to the editing page
+    newUrl = '/dev/'+ funktio +'/' + game_id + '/'
+    window.location = newUrl
+  }
+</script>
+
+<!-- ### HTML ### -->
+<div class="oddcolors col-sm-6">
+<h2>Your games</h2>
+
+<table style="width:100%">
+{% for game in developed_games %}
+<tr>
+  <td>{{ game.name }}</td>
+  <!-- Infonäkymä -->
+  <td> <button class="btn btn-primary" onclick="redirect({{ game.id }}, 'info')" id="{{ game.id }}"> info </button> </td>
+  <!-- Muutosnäkymä -->
+  <td> <button class="btn btn-warning" onclick="redirect({{ game.id }}, 'edit')" id="{{ game.id }}"> edit </button> </td>
+  <!-- Poistonäkymä -->
+  <td> <button class="btn btn-danger" onclick="redirect({{ game.id }}, 'delete')" id="{{ game.id }}"> delete </button> </td>
+
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endif %}
+{% else %}
+<h3>Please activate your email or finish your profile to continue.</h3>
+{% endif %}
+{% endblock %}

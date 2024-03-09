@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- ### HTML ### -->
+{% with this_game|first as game %}
+  <h2>Info for {{game.name}}</h2>
+  <div class="marginbottom">
+  <table>
+    <tr>
+      <th>Price</th>
+      <th>Url</th>
+      <th>Items sold</th>
+    </tr>
+    <tr>
+      <td>{{game.price}} eur</td>
+      <td><a class="multiline" href="{{game.url}}">{{game.url}}</a></td>
+      <td>{{sold_items}} pcs</td>
+    </tr>
+  </table>
+</div>
+{% endwith %}
+<div class="marginbottom">
+  <h3>Sales statistics</h3>
+  <table>
+  <tr>
+    <th style="text-align:left">Buyer</th>
+    <th style="text-align:left">Buying time</th>
+  </tr>
+  {% for sale in single_game_stats %}
+  <tr>
+    <td> {{ sale.user }}</td>
+    <td> {{ sale.time }}</td>
+  </tr>
+  {% endfor%}
+  </table>
+</div>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Error with payment</h2>
+
+<p>There was an error with buying {{game.name}}!</p>
+
+<Button class="btn btn-primary" onClick="goToGame({{game.id}})">Return to the game</Button>
+<Button class="btn btn-secondary" onClick="goToStore()">Return to the store</Button>
+
+<script>
+  function goToGame(game_id){
+    // Takes the user to the game page
+    window.location = '/game/' + game_id + '/'
+  }
+
+  function goToStore(){
+    // Takes the user to the frontpage
+    window.location = '/'
+  }
+</script>
+{% endblock %}
